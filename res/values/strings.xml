@@ -4,5 +4,7 @@
     <string name="welcome">Welcome to SimpleAndroidTest</string>
     <string name="start_test_button">Start test</string>
     <string name="about_button">About SimpleAndroidTest</string>
+    <string name="about_dialog_title">About SimpleAndroidTest</string>
+    <string name="about_dialog_content">This is free software, distributed under the GPLv3. Modify as you see fit!</string>
 
 </resources>
