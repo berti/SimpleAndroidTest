@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Random;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -61,7 +62,7 @@ public class TestActivity extends Activity {
 
 	/* Public static fields ******************** */
 
-	public final static String EXTRA_NUM_QUESTIONS = "EXTRA_NUM_QUESTIONS";
+	public final static String EXTRA_TOTAL_QUESTIONS = "EXTRA_NUM_QUESTIONS";
 	public final static String EXTRA_CORRECT_ANSWERS = "EXTRA_CORRECT_ANSWERS";
 	public final static String EXTRA_SCORE = "EXTRA_SCORE";
 
@@ -126,7 +127,11 @@ public class TestActivity extends Activity {
 	}
 
 	private void showResults() {
-
+		Intent intent = new Intent(this, ResultsActivity.class);
+		intent.putExtra(EXTRA_TOTAL_QUESTIONS, questions.size());
+		intent.putExtra(EXTRA_CORRECT_ANSWERS, correctAnswers);
+		intent.putExtra(EXTRA_SCORE, score);
+		startActivity(intent);
 	}
 
 	private void showQuestion(Question question) {
