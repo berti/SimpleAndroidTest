@@ -20,7 +20,11 @@
 package com.primoberti.simpleandroidtest;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -48,6 +52,18 @@ public class ResultsActivity extends Activity {
 		textView.setText(String.format(
 				getResources().getString(R.string.results_overview),
 				totalQuestions, correctAnswers));
+
+		Button button = (Button) findViewById(R.id.closeResultsButton);
+		button.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ResultsActivity.this,
+						SimpleAndroidTestActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+			}
+		});
 	}
 
 }
