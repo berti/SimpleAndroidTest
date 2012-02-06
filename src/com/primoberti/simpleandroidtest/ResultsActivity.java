@@ -51,7 +51,7 @@ public class ResultsActivity extends Activity {
 		textView = (TextView) findViewById(R.id.resultsOverview);
 		textView.setText(String.format(
 				getResources().getString(R.string.results_overview),
-				totalQuestions, correctAnswers));
+				correctAnswers, totalQuestions));
 
 		Button button = (Button) findViewById(R.id.closeResultsButton);
 		button.setOnClickListener(new OnClickListener() {
