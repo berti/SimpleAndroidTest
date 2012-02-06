@@ -1,0 +1,4 @@
+Sample question with {options,actions,intents,activities} in the middle.
+Does this question have its options at the end? {Yes,No,Maybe,Probably not}
+{This,That,These,Those} question has its options at the very beginning.
+Another sample question with {options,actions,intents,activities} in the middle.
