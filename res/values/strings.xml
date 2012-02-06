@@ -6,5 +6,6 @@
     <string name="about_button">About SimpleAndroidTest</string>
     <string name="about_dialog_title">About SimpleAndroidTest</string>
     <string name="about_dialog_content">This is free software, distributed under the GPLv3. Modify as you see fit!</string>
+    <string name="test_progress">Question %1$d of %2$d</string>
 
 </resources>
