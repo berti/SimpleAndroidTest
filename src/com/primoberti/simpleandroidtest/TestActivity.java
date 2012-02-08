@@ -154,6 +154,8 @@ public class TestActivity extends Activity {
 		intent.putExtra(EXTRA_CORRECT_ANSWERS, correctAnswers);
 		intent.putExtra(EXTRA_SCORE, score);
 		startActivity(intent);
+
+		finish();
 	}
 
 	private void showQuestion(Question question) {
