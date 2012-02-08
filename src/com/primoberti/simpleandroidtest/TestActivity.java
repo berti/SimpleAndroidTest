@@ -95,7 +95,7 @@ public class TestActivity extends Activity {
 			}
 
 			ProgressBar progressBar = (ProgressBar) findViewById(R.id.testProgressBar);
-			progressBar.setMax(questions.size());
+			progressBar.setMax(totalQuestions);
 		}
 		catch (IOException e) {
 			Log.e("EnglishTest", e.getMessage(), e);
@@ -138,7 +138,7 @@ public class TestActivity extends Activity {
 			TextView progressLabel = (TextView) findViewById(R.id.testProgressLabel);
 			progressLabel.setText(String.format(
 					getResources().getString(R.string.test_progress),
-					currentQuestion + 1, questions.size()));
+					currentQuestion + 1, totalQuestions));
 
 			ProgressBar progressBar = (ProgressBar) findViewById(R.id.testProgressBar);
 			progressBar.setProgress(currentQuestion + 1);
@@ -150,7 +150,7 @@ public class TestActivity extends Activity {
 
 	private void showResults() {
 		Intent intent = new Intent(this, ResultsActivity.class);
-		intent.putExtra(EXTRA_TOTAL_QUESTIONS, questions.size());
+		intent.putExtra(EXTRA_TOTAL_QUESTIONS, totalQuestions);
 		intent.putExtra(EXTRA_CORRECT_ANSWERS, correctAnswers);
 		intent.putExtra(EXTRA_SCORE, score);
 		startActivity(intent);
