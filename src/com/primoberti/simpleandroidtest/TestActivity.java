@@ -23,6 +23,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,15 +57,25 @@ public class TestActivity extends Activity {
 
 	private int currentQuestion = -1;
 
+	private int totalQuestions;
+
 	private int score = 0;
 
 	private int correctAnswers = 0;
+
+	private Random random = new Random();
 
 	/* Public static fields ******************** */
 
 	public final static String EXTRA_TOTAL_QUESTIONS = "EXTRA_NUM_QUESTIONS";
 	public final static String EXTRA_CORRECT_ANSWERS = "EXTRA_CORRECT_ANSWERS";
 	public final static String EXTRA_SCORE = "EXTRA_SCORE";
+
+	/* Private static fields ******************* */
+
+	// TODO use preferences or other sort of configuration
+	private final static boolean SELECT_RANDOM = true;
+	private final static int MAX_QUESTIONS = 2;
 
 	/* Activity methods ************************ */
 
@@ -76,6 +87,13 @@ public class TestActivity extends Activity {
 		try {
 			InputStream inputStream = getAssets().open("questions.txt");
 			questions = parseQuestions(inputStream);
+
+			if (MAX_QUESTIONS > 0) {
+				totalQuestions = Math.min(questions.size(), MAX_QUESTIONS);
+			}
+			else {
+				totalQuestions = questions.size();
+			}
 
 			ProgressBar progressBar = (ProgressBar) findViewById(R.id.testProgressBar);
 			progressBar.setMax(questions.size());
@@ -109,8 +127,13 @@ public class TestActivity extends Activity {
 
 	private void nextQuestion() {
 		currentQuestion++;
-		if (currentQuestion < questions.size()) {
-			question = questions.get(currentQuestion);
+		if (currentQuestion < totalQuestions) {
+			if (SELECT_RANDOM) {
+				question = questions.remove(random.nextInt(questions.size()));
+			}
+			else {
+				question = questions.get(currentQuestion);
+			}
 			showQuestion(question);
 
 			TextView progressLabel = (TextView) findViewById(R.id.testProgressLabel);
